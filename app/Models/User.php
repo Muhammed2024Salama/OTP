@@ -44,4 +44,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function generateCode()
+    {
+        $this->timestamps = false;
+        $this->code = rand(1000,9999);
+        $this->expire_at = now()->addMinute(10);
+        $this->save();
+    }
 }
