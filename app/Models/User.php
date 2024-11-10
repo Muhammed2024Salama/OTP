@@ -45,6 +45,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * @return void
+     */
     public function generateCode()
     {
         $this->timestamps = false;

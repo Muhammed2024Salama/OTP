@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +49,17 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+
+        /**
+         * Insert Code Into DataBase
+         */
+        $user = User::where('email', $this->input('email'))->first();
+
+        /**
+         * Function generateCode Used in User Model
+         * To Generate Code in DataBase 
+         */
+        $user->generateCode();
 
         RateLimiter::clear($this->throttleKey());
     }
