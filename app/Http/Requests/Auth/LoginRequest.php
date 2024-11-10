@@ -57,7 +57,7 @@ class LoginRequest extends FormRequest
 
         /**
          * Function generateCode Used in User Model
-         * To Generate Code in DataBase 
+         * To Generate Code in DataBase
          */
         $user->generateCode();
 
