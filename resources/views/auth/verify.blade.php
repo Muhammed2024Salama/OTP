@@ -3,19 +3,19 @@
         {{ __('يرجى ادخال رمز التحقق المرسل لكم ') }}
     </div>
 
-    <form method="POST" action="{{ route('password.confirm') }}">
+    <form method="POST" action="{{ route('verify.store') }}">
         @csrf
 
         <!-- Password -->
         <div>
             <x-input-label for="password" :value="__('كود التحقق')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <x-text-input id="code" class="block mt-1 w-full"
+                            type="text"
+                            name="code"
+                            required />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('code')" class="mt-2" />
         </div>
 
         <div class="flex justify-end mt-4">
