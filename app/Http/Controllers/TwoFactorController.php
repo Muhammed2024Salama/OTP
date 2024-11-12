@@ -27,10 +27,11 @@ class TwoFactorController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
         if ($request->input('code') == auth()->user()->code) {
 
             // dd(auth()->user()->code);
-
+            $user->restCode();
             return redirect()->route('dashboard');
         }
 
